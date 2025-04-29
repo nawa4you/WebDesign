@@ -1,0 +1,370 @@
+/* --- Global Resets & Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-dark: #0f091a; /* Adjust dark background color */
+    --bg-card: #1a1a1e; /* Slightly lighter for cards */
+    --text-light: #ffffff;
+    --text-secondary: #a0a0a0;
+    --highlight-color: #ff6b81; /* Adjust pink/orange highlight */
+    --gradient-start: #ff8a8a;
+    --gradient-end: #a259ff; /* Adjust purple gradient end */
+    --font-primary: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll from blur */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-outline {
+    border: 1px solid var(--highlight-color);
+    color: var(--highlight-color);
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: var(--highlight-color);
+    color: var(--text-light);
+}
+
+.btn-gradient {
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    color: var(--text-light);
+    border: none;
+}
+
+.btn-gradient:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(162, 89, 255, 0.3);
+}
+/* Glass/Acrylic Effect for header */
+header {
+    background: rgba(17, 17, 19, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: #111113; /* Slightly different header bg */
+    padding: 15px 0;
+    position: sticky; /* Optional: make header sticky */
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #2a2a2e; /* Subtle border */
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--text-light);
+}
+
+header nav ul {
+    display: flex;
+    gap: 25px; /* Spacing between nav items */
+}
+
+header nav ul li a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+header nav ul li a:hover {
+    color: var(--text-light);
+}
+
+.mobile-menu-toggle { /* Basic style for mobile toggle */
+    display: none; /* Hide by default */
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero {
+    padding: 100px 0 80px; /* Adjust padding */
+    position: relative;
+    overflow: hidden; /* Contain the background blur */
+    min-height: 80vh; /* Ensure it takes significant height */
+    display: flex;
+    align-items: center;
+}
+
+/* Abstract Background Graphic - Simplified CSS Approach */
+.hero-background-blur {
+    position: absolute;
+    top: 50%;
+    left: 65%; /* Position more to the right */
+    width: 700px; /* Adjust size */
+    height: 700px; /* Adjust size */
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at center, rgba(100, 80, 255, 0.4) 0%, rgba(200, 80, 200, 0.3) 40%, rgba(80, 180, 255, 0.3) 70%, rgba(13, 13, 15, 0) 90%);
+    filter: blur(100px); /* Heavy blur */
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0.8; /* Adjust opacity */
+}
+/* You might need ::before and ::after for multiple overlapping shapes */
+
+
+.hero-content-container {
+    position: relative; /* Ensure content is above blur */
+    z-index: 1;
+    display: flex; /* Allows text on left, potential graphic on right */
+    align-items: center;
+}
+
+.hero-text {
+    max-width: 60%; /* Limit width of text block */
+}
+
+.hero-decorative-lines {
+    margin-bottom: 15px;
+    width: 30px; /* Adjust size */
+    height: 20px; /* Adjust size */
+    position: relative;
+}
+
+.hero-decorative-lines span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--highlight-color);
+    border-radius: 1px;
+    position: absolute;
+    transform-origin: left center;
+}
+.hero-decorative-lines span:nth-child(1) { top: 0; transform: rotate(-25deg); }
+.hero-decorative-lines span:nth-child(2) { top: 8px; width: 80%; }
+.hero-decorative-lines span:nth-child(3) { top: 16px; transform: rotate(25deg); }
+
+
+.hero h1 {
+    font-size: 3.8rem; /* Adjust font size */
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.hero h1 .highlight-text {
+    color: var(--highlight-color);
+    display: block; /* Make it appear on its own line */
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 500px; /* Limit paragraph width */
+}
+
+.hero-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, var(--text-secondary), transparent);
+    margin-top: 60px;
+    width: 80%; /* Adjust length */
+    opacity: 0.4;
+}
+
+
+/* --- Logos Section --- */
+.logos {
+    padding: 60px 0;
+    background-color: var(--bg-dark); /* Can be same as body or slightly different */
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+    gap: 25px;
+}
+
+.logo-card {
+    background-color: var(--bg-card);
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #2a2a2e; /* Subtle border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logo-placeholder { /* Style the text logo */
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    /* If using actual image logos, style the <img> tag instead */
+}
+
+/* Specific Logo text styles if needed (like sortlist being lowercase) */
+.logo-card:nth-child(2) .logo-placeholder { text-transform: lowercase; }
+.logo-card:nth-child(3) .logo-placeholder { font-size: 1.2rem; } /* Example adjustment */
+
+
+.logo-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+    border-top: 1px solid #2a2a2e;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .hero-text {
+        max-width: 70%;
+    }
+    .logo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+    /* Hide some nav items or adjust spacing */
+    header nav ul {
+        gap: 15px;
+    }
+     header nav ul li:nth-child(3), /* Example: Hide some links on medium screens */
+     header nav ul li:nth-child(4) {
+        /* display: none; */ /* Or handle differently */
+     }
+}
+
+@media (max-width: 768px) {
+    header nav ul {
+        display: none; /* Hide desktop nav */
+        /* Basic mobile menu display (needs JS to toggle) */
+        /* position: absolute; top: 100%; left: 0; width: 100%; background: #111; flex-direction: column; padding: 20px; text-align: center; */
+    }
+    .mobile-menu-toggle {
+        display: block; /* Show hamburger */
+    }
+     header nav .btn-outline { /* Maybe hide header CTA on small screens */
+        display: none;
+     }
+
+    .hero {
+        padding: 60px 0 40px;
+        text-align: center; /* Center text on mobile */
+        min-height: auto;
+    }
+    .hero-content-container {
+        flex-direction: column; /* Stack content */
+    }
+    .hero-text {
+        max-width: 100%;
+    }
+    .hero-background-blur {
+        width: 120vw; /* Make blur wider */
+        height: 500px;
+        left: 50%;
+        opacity: 0.6;
+        filter: blur(80px);
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        margin-left: auto;
+        margin-right: auto; /* Center paragraph */
+    }
+     .hero-divider {
+        margin-left: auto;
+        margin-right: auto; /* Center divider */
+        width: 60%;
+     }
+     .hero-decorative-lines {
+        margin-left: auto;
+        margin-right: auto; /* Center lines */
+     }
+
+    .logo-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 0.9rem;
+    }
+    .logo-grid {
+        grid-template-columns: 1fr; /* 1 column on small mobile */
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}
