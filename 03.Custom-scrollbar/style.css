@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+body {
+    background: darksalmon;
+}
+
+
+.card {
+    width: 700px;
+    background: whitesmoke;
+    padding: 2cqmax;
+    margin: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 28px;
+    border-radius: 15px;
+}
+
+
+/* Scrollbar  */
+
+::-webkit-scrollbar{
+    background-color: transparent;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: whitesmoke;
+    border-radius: 100px;
+    
+}
